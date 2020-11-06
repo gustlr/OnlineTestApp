@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MCQTestPagesComponent } from './mcqtest-pages/mcqtest-pages.component';
+import { FirstPageComponent } from './first-page/first-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MCQTestPagesComponent,
+    FirstPageComponent
   ],
   imports: [
     BrowserModule,
