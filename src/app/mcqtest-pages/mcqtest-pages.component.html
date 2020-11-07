@@ -1,25 +1,73 @@
 <style type="text/css">
-    p.button:hover { cursor: pointer; 
-    
+    p.button:hover {
+        cursor: pointer;
+
     }
-    #answer{
+
+    #answer {
         margin-bottom: 5px;
-        text-decoration: none; 
+        text-decoration: none;
         background-color: #ddd;
-        color: darkolivegreen; 
+        color: darkolivegreen;
         font-weight: bold;
     }
-    p.padding  { padding:0; margin:0;}
- </style>
+
+    p.padding {
+        padding: 0;
+        margin: 0;
+    }
+
+    #answer:focus {
+        outline: none;
+        box-shadow: none;
+        background-color: blue;
+    }
+</style>
 
 <p>mcqtest-pages works!</p>
+<!-- <button (click) = "turnTo()" ></button> -->
+
 <div>
+    {{loadDataInfo()}}
     <P>{{question}}</P>
-    <div *ngFor="let m of mc">
-        <p class="button padding" id="answer">{{m}}</p>
+
+    <div *ngFor="let m of mc; let i = index">
+        <input id="answer" (click)="some(m)" type="button" class="button padding" id="answer" value="{{m}}">
     </div>
     <!-- {{console.log(mcq)}} -->
+    <h3>{{userChooice}}</h3>
+    <button style = "background-color: ;" (click)="storeAnser(userChooice)" [disabled]="isDone">{{isDone}}Next</button>
 </div>
-<button (click)="loadDataInfo()">Next
-</button>
-<router-outlet></router-outlet>
+
+
+<div *ngIf="isDone">
+    <div *ngFor="let ua of userAnswers">
+        <p>Ansewer----- {{ua.userAnswer}}</p>
+
+    </div>
+<section *ngIf="mcq.length">
+    <h1>{{totalPoint}}/{{mcq.length}}  {{score}}</h1>
+<ng-container *ngFor="let question of mcq;let i = index ">
+    
+    <!-- <div *ngFor="let question of mcq; let i = index"> -->
+        <p>{{question.question}}</p>
+        <!-- <p>{{question.mChooices}}</p> -->
+        <div *ngFor="let mc of question.mChooices; ">
+            <div>
+                <p [style.color]="colorRightAn(mc) ? 'red' : 'balck'"
+                [style.background-color]= "colorUserAn(mc) ? 'yellow' : 'green'">{{mc}}</p>
+            </div>
+            
+         <!-- </div> -->
+    </div>
+</ng-container>
+</section>
+    <!-- <div *ngFor="let mc of mcq.mChooice">
+        <p>{{mc}}</p>
+        </div> -->
+    <!-- <p>{{totalPoint}}</p> -->
+</div>
+
+
+<!-- <button routerLink="allmc">See your Scouce</button>
+<router-outlet></router-outlet> -->
