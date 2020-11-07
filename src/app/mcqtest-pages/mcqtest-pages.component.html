@@ -10,52 +10,68 @@
         background-color: #ddd;
         color: darkolivegreen;
         font-weight: bold;
+       
+  width: 80%;
     }
 
     p.padding {
         padding: 0;
         margin: 0;
+ 
     }
 
     #answer:focus {
         outline: none;
         box-shadow: none;
-        background-color: blue;
+        background-color: rgb(49, 49, 158);
+    }
+    .question{
+        font-weight: bolder;
+    }
+    #userQu, #userAn{
+        margin-left: 30px;
+        margin-top: 40px;
+    }
+    #questcon{
+        margin-left: 30px;
+    }
+    #h1score{
+        text-align:center;
     }
 </style>
 
-<p>mcqtest-pages works!</p>
-<!-- <button (click) = "turnTo()" ></button> -->
 
-<div>
+<!-- <button (click) = "turnTo()" ></button> -->
+<div id ="userQu">
     {{loadDataInfo()}}
-    <P>{{question}}</P>
+    <P class="question">{{question}}</P>
 
     <div *ngFor="let m of mc; let i = index">
         <input id="answer" (click)="some(m)" type="button" class="button padding" id="answer" value="{{m}}">
     </div>
     <!-- {{console.log(mcq)}} -->
-    <h3>{{userChooice}}</h3>
-    <button style = "background-color: ;" (click)="storeAnser(userChooice)" [disabled]="isDone">{{isDone}}Next</button>
+    <h5>{{userChooice}}</h5>
+    <button (click)="storeAnser(userChooice)" [disabled]="isDone">Next</button>
 </div>
 
-
 <div *ngIf="isDone">
-    <div *ngFor="let ua of userAnswers">
+    <!-- <div *ngFor="let ua of userAnswers">
         <p>Ansewer----- {{ua.userAnswer}}</p>
 
-    </div>
-<section *ngIf="mcq.length">
-    <h1>{{totalPoint}}/{{mcq.length}}  {{score}}</h1>
-<ng-container *ngFor="let question of mcq;let i = index ">
+    </div> -->
+
+<section id= "userAn" *ngIf="mcq.length">
+    <hr width="50%" size="10">
+    <h1 id="h1score">You scored {{totalPointF()}}/{{mcq.length}}</h1>
+<ng-container  *ngFor="let question of mcq;let i = index ">
     
     <!-- <div *ngFor="let question of mcq; let i = index"> -->
-        <p>{{question.question}}</p>
+        <p  class="question">{{question.question}}</p>
         <!-- <p>{{question.mChooices}}</p> -->
-        <div *ngFor="let mc of question.mChooices; ">
+        <div id="questcon" *ngFor="let mc of question.mChooices; ">
             <div>
                 <p [style.color]="colorRightAn(mc) ? 'red' : 'balck'"
-                [style.background-color]= "colorUserAn(mc) ? 'yellow' : 'green'">{{mc}}</p>
+                [style.background-color]= "colorUserAn(mc) ? 'yellow' : 'white'">{{mc}}</p>
             </div>
             
          <!-- </div> -->

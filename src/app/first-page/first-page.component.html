@@ -1,15 +1,34 @@
-<h1>This is MAIN</h1>
+<style>
+  .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  margin-top: 30%;
+}
+.centerIn{
+  margin: auto;
+  width: 50%;
+}
+#button{
+padding: 40px;
+font-weight: bold;
+font-size: medium;
+width:50%;
+margin: auto;
+}
+</style>
 
-<div>
-  <div>
-    <h1>Title of the test</h1>
-    <h2>what it is</h2>
-    <p>25min</p>
+
+<div class="center">
+  <div class="centerIn">
+    <h1>Quiz MongoDB</h1>
+    <h2><--Good Luck--></h2>
 
   </div>
 
-  <div>
-    <button routerLink = "mcq">Start</button>
+  <div class="centerIn">
+    <button id="button" routerLink = "mcq">Start</button>
   </div>
 </div>
 <router-outlet></router-outlet>

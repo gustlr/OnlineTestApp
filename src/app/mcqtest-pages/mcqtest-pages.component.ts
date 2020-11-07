@@ -122,6 +122,12 @@ score = 0;
       }
     }
    }
+   totalPointF(){
+    return this.totalPoint
+   }
+   getscore(){
+     return this.score
+   }
 
 
 }
